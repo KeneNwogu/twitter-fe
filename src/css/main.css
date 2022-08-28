@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+}
+
+:root{
+    --color-white: hsl(252, 30%, 100%);
+    --color-light: hsl(252, 30%, 95%);
+    --color-gray: hsl(252, 15%, 65%);
+    --color-primary: hsl(252, 75%, 60%);
+    --color-secondary: hsl(252, 100%, 90%);
+    --color-success: hsl(120, 95%, 65%);
+    --color-danger: hsl(0, 95%, 65%);
+    --color-black: hsl(252, 30%, 10%);
+
+    --border-radius: 2rem;
+    --card-border-radius: 1rem;
+    --btn-padding: 0.6rem 2rem;
+    --card-padding: 1rem;
+    --search-padding: 0.6rem 1rem;
+    --icon-size: 1.4rem;
+    --default-font-size: 0.8rem;
+    --gap: 1rem;
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+    background: var(--color-light);
+    font-size: var(--default-font-size);
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile-photo{
+    width: 2.7rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+
+.btn{
+    display: inline-block;
+    padding: var(--btn-padding);
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 300ms ease;
+    font-size: 0.9rem;
+}
+
+.btn-primary{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.mobile{
+    display: none;
+}
+
+/* NAV BAR */
+nav{
+    width: 100%;
+    background: var(--color-white);
+    padding: 0.7rem 0;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+nav .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .logo{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+nav .logo > i {
+    font-size: 1.4rem;
+    color: blue;
+}
+
+nav .search-bar{
+    background: var(--color-light);
+    border-radius: var(--border-radius);
+    padding: var(--search-padding);
+}
+
+nav .search-bar input[type="search"]{
+    background: transparent;
+    width: 30vw;
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-light);
+}
+
+nav .search-bar input[type="search"]::placeholder{
+    color: var(--color-gray);
+}
+
+nav .create{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* MAIN  */
+main{
+    margin-top: 6rem;
+}
+
+main .container{
+    display: grid;
+    grid-template-columns: 18vw auto 20vw;
+    column-gap: 2rem;
+}
+
+main .sidebar .menu-item{
+    display: flex;
+    align-items: center;
+    padding: var(--card-padding);
+    height: 4rem;
+}
+
+main .sidebar{
+    background: var(--color-white);
+    /* padding: var(--card-padding); */
+    border-radius: 0 var(--border-radius) var(--border-radius);
+}
+.sidebar i{
+    font-size: 1.4rem;
+    color: var(--color-gray);
+}
+.sidebar h3{
+    margin-left: 1.5rem;
+    font-size: 1rem;
+}
+
+.menu-item.active, .menu-item.active i{
+    /* background: var(--color-light); */
+    color: var(--color-primary);
+    position: relative;
+}
+
+.menu-item.active::before{
+    content: "";
+    display: block;
+    position: absolute;
+    background: var(--color-primary);
+    width: 0.4rem;
+    height: 100%;
+    left: 0;
+}
+
+.middle .create-post{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem var(--card-padding);
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+}
+
+.middle form + div.post-container{
+    /* width: 90%; */
+    margin-top: 2rem;
+    margin: 3rem auto;
+}
+
+.post-container > .post-card{
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: 0% 0% var(--card-border-radius) var(--card-border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.post-card .vueperslides{
+    width: 100%;
+    padding: 1rem;
+}
+
+.post-card .post-info, .post-card .post-actions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-info .post-info__user{
+    display: flex;
+    gap: 1rem;
+}
+
+.post-card i{
+    font-size: 1.4rem;
+}
+
+.post-card .post-details{
+    /* margin-top: 1rem; */
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.post-card .post-details .post-details__name, .post-details .post-details__likes{
+    font-weight: 700;
+    font-size: 100;
+}
+
+.post-card .post-details .post-details__caption, .post-card .post-info .post-info__locale, .post-details .post-details__date{
+    color: var(--color-gray);
+}
+
+.post-card .post-details .post-details__comments{
+    width: 100%;
+    padding-top: var(--search-padding);
+    color: var(--color-danger);
+    margin-top: 1.4rem;
+    display: block;
+    text-align: center;
+}
+.post-details .post-details__likes, .post-details .post-details__date{
+    /* padding: 0 -0.5rem; */
+    width: 100%;
+    
+}
+aside.toolbar{
+    width: fit-content;
+    background: var(--color-white);
+    padding: 1rem;
+    border-radius: var(--card-border-radius);
+    margin: 0 auto;
+}
+
+aside.toolbar .tool{
+    display: flex;
+    align-items: center;
+}
+
+aside.toolbar .tool .tool__expand{
+    display: none;
+}
+
+aside.toolbar:hover .tool__expand{
+    display: inline-block;
+    color: var(--color-gray);
+}
+
+aside.toolbar .tool .tool-icon{
+    color: var(--color-gray);
+    font-size: 2rem;
+}
