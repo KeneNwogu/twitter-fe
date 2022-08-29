@@ -140,9 +140,14 @@ main .sidebar .menu-item{
     padding: var(--card-padding);
     height: 4rem;
 }
-
+.left{
+    /* position: fixed; */
+}
 main .sidebar{
     background: var(--color-white);
+    height: fit-content;
+    /* position: fixed; */
+    /* display: none; */
     /* padding: var(--card-padding); */
     border-radius: 0 var(--border-radius) var(--border-radius);
 }
@@ -159,6 +164,7 @@ main .sidebar{
     /* background: var(--color-light); */
     color: var(--color-primary);
     position: relative;
+    cursor: pointer
 }
 
 .menu-item.active::before{
@@ -174,10 +180,16 @@ main .sidebar{
 .middle .create-post{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 0.4rem var(--card-padding);
     background: var(--color-white);
     border-radius: var(--card-border-radius);
+}
+.move-right{
+    margin-left: auto;
+}
+.create-post .profile-photo{
+    margin-right: 0.9rem;
 }
 
 .middle form + div.post-container{

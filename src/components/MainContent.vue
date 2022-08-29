@@ -5,7 +5,7 @@
                 <img src="@/assets/logo.png" alt="">
             </div>
             <input type="text" placeholder="what's on your mind, Diana?">
-            <input type="submit" value="Post" class="btn btn-primary">
+            <input type="submit" value="Post" class="btn btn-primary move-right">
             <button class="mobile btn btn-primary" type="submit">
                 <i class="uil uil-twitter"></i>
             </button>
