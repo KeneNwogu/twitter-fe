@@ -32,8 +32,6 @@
 </template>
 
 <style scoped>
-@media only screen and (max-width: 425px){
-	/*Small smartphones [325px -> 425px]*/
     .comment{
     padding-top: 1rem;
     padding-left: 0.5rem;
@@ -81,6 +79,4 @@
   .tweet-actions__icons i{
     font-size: 1.3rem;
 }
-}
-
 </style>

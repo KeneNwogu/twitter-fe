@@ -12,12 +12,13 @@
     <div class="tweet-container" v-if="tweet">
         <TweetDetails :tweet="tweet" />
     </div>
-    <div class="comments container">
-
-    </div>
 </template>
 
 <style scoped>
+    nav{
+        width: 100vw;
+        left: 0;
+    }
     a{
         display: block;
         color: inherit;

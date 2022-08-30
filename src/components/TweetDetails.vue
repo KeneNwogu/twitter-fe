@@ -1,5 +1,5 @@
 <template>
-    <div class="post-card">  
+    <div class="post-card middle">  
         <div class="post-info">
             <div class="post-info__user">
                 <div class="profile-photo">
