@@ -30,12 +30,11 @@
             </div>
         </div>
         <div class="tweet-actions">
-            <div class="tweet-actions__icons">
-                <span><i class="uil uil-heart"></i></span>
-                <span><i class="uil uil-angle-double-up"></i></span>
-                <span><i class="uil uil-comment-alt-upload"></i></span>
-            </div>
+            
         </div>
+    </div>
+    <div class="comments">
+        <CommentCard />
     </div>
 </template>
 
@@ -70,6 +69,7 @@ body{
 import { ref } from 'vue';
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
+import CommentCard from './CommentCard.vue'
 
 import { defineProps } from 'vue'
 
