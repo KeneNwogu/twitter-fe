@@ -140,9 +140,9 @@ main .sidebar .menu-item{
     padding: var(--card-padding);
     height: 4rem;
 }
-.left{
-    /* position: fixed; */
-}
+/* .left{
+    position: fixed;
+} */
 main .sidebar{
     background: var(--color-white);
     height: fit-content;

@@ -2,9 +2,9 @@
 	<NavBar v-if="allowed_navbar_paths.includes(path)"/>
 	<main>
 		<div class="container">
-			<SideBar />
+			<SideBar v-if="!not_allowed_sidebar_paths.includes(path)"/>
 			<router-view></router-view>
-			<UtilityBar />
+			<UtilityBar v-if="!not_allowed_sidebar_paths.includes(path)" />
 		</div>
 	</main>
 </template>
@@ -19,6 +19,7 @@
 	const route = useRoute();
 	const path = computed(() => route.path);
 	const allowed_navbar_paths = ['/']
+	const not_allowed_sidebar_paths = ['/register']
 </script>
 
 <style setup>
