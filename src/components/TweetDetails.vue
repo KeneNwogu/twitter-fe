@@ -35,6 +35,9 @@
     </div>
     <div class="comments">
         <CommentCard />
+        <CommentCard />
+        <CommentCard />
+        <CommentCard />
     </div>
 </template>
 
@@ -42,7 +45,27 @@
 body{
     background: var(--color-white);
 }
+.post-card{
+    background-color: var(--color-white);
+    padding-top: 1rem;
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
+    /* padd */
+}
+.post-info{
+    padding-left: 0.5rem;
+    padding-right: 0.9rem;
+}
+.comments{
+    background-color: var(--color-white);
+    border-bottom-left-radius: var(--card-border-radius);
+    border-bottom-right-radius: var(--card-border-radius);
+    padding-bottom: 0.1rem;
+}
 .tweet-details .tweet-details__info{
+    
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     display: flex;
     justify-content: space-around;
     width: 100%;

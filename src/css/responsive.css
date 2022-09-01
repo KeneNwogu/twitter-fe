@@ -1,4 +1,7 @@
 @media screen and (max-width: 480px) {
+    .container{
+        max-width: 100%;
+    }
     .mobile{
         display: block;
     }
@@ -11,12 +14,28 @@
     nav .create .btn{
         display: none;
     }
+    main{
+        margin-top: 4.7rem;
+    }
     main .container{
         display: block;
-        width: 100%;
+        width: 94%;
+    }
+    .middle .create-post{
+        padding: 0.1rem var(--card-padding);
+    }
+    .middle form + div.post-container{
+        margin-top: 0.7rem;
+    }
+    .post-container > .post-card{
+        margin-bottom: 0.6rem;
+    }
+    .post-info__options{
+        transform: rotate(0deg);
+        margin-top: 0;
     }
     .create-post, .post-container{
-        width: 80%;
+        width: 100%;
         margin: 0 auto;
     }
     .left.sidebar, .right .toolbar{
@@ -28,6 +47,7 @@
     .middle .create-post .mobile.btn{
         border-radius: 50%;
         padding: 12px;
+        margin-left: auto;
     }
 
     .mobile.hamburger{

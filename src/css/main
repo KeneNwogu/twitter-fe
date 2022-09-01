@@ -1,0 +1,148 @@
+main .sidebar .menu-item{
+    display: flex;
+    align-items: center;
+    padding: var(--card-padding);
+    height: 4rem;
+}
+/* .left{
+    position: fixed;
+} */
+main .sidebar{
+    background: var(--color-white);
+    height: fit-content;
+    /* position: fixed; */
+    /* display: none; */
+    /* padding: var(--card-padding); */
+    border-radius: 0 var(--border-radius) var(--border-radius);
+}
+.sidebar i{
+    font-size: 1.4rem;
+    color: var(--color-gray);
+}
+.sidebar h3{
+    margin-left: 1.5rem;
+    font-size: 1rem;
+}
+
+.menu-item.active, .menu-item.active i{
+    /* background: var(--color-light); */
+    color: var(--color-primary);
+    position: relative;
+    cursor: pointer
+}
+
+.menu-item.active::before{
+    content: "";
+    display: block;
+    position: absolute;
+    background: var(--color-primary);
+    width: 0.4rem;
+    height: 100%;
+    left: 0;
+}
+.middle{
+    width: 100%;
+    background-color: aliceblue;
+}
+.middle .create-post{
+    /* background-color: white; */
+    display: flex;
+    align-items: center;
+    padding: 0.4rem var(--card-padding);
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+}
+.move-right{
+    margin-left: auto;
+}
+.create-post .profile-photo{
+    margin-right: 0.9rem;
+}
+
+.middle form + div.post-container{
+    margin-top: 2rem;
+    margin: 3rem auto;
+}
+
+.post-container > .post-card{
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: 0% 0% var(--card-border-radius) var(--card-border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.post-card .vueperslides{
+    width: 100%;
+    padding: 1rem;
+}
+
+.post-card .post-info, .post-card .post-actions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-info .post-info__user{
+    display: flex;
+    gap: 1rem;
+}
+
+.post-card i{
+    font-size: 1.4rem;
+}
+
+.post-card .post-details{
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.post-card .post-details .post-details__name, .post-details .post-details__likes{
+    font-weight: 700;
+    font-size: 100;
+}
+
+.post-card .post-details .post-details__caption, .post-card .post-info .post-info__locale, .post-details .post-details__date{
+    color: var(--color-gray);
+}
+
+.post-card .post-details .post-details__comments{
+    width: 100%;
+    padding-top: var(--search-padding);
+    color: var(--color-danger);
+    margin-top: 1.4rem;
+    display: block;
+    text-align: center;
+}
+.post-details .post-details__likes, .post-details .post-details__date{
+    /* padding: 0 -0.5rem; */
+    width: 100%;
+    
+}
+aside.toolbar{
+    width: fit-content;
+    width: 100%;
+    background: var(--color-white);
+    padding: 1rem;
+    border-radius: var(--card-border-radius);
+    /* margin: 0 auto; */
+}
+
+aside.toolbar .tool{
+    display: flex;
+    align-items: center;
+}
+
+aside.toolbar .tool .tool__expand{
+    display: inline-block;
+    cursor: pointer;
+}
+@media (hover :hover){
+    aside.toolbar .tool .tool__expand:hover{
+        color: var(--color-gray);
+    }
+}
+
+aside.toolbar .tool .tool-icon{
+    color: var(--color-gray);
+    font-size: 2rem;
+}

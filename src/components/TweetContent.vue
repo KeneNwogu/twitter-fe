@@ -5,7 +5,7 @@
                 <div class="profile-photo">
                     <img src="@/assets/logo.png" alt="">
                 </div>
-                <div>
+                <div class="post-info__userInfo">
                     <p>{{ tweet.user.fullname }}</p> 
                     <small class="post-info__locale">@{{ tweet.user.username }}</small>
                 </div>
