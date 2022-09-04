@@ -11,6 +11,16 @@
 }
 
 :root{
+    --bootstrap-primary: #0099CC;
+    --google-dark: #CC0000;
+    --twitter-dark: #0097d3;
+    --facebook-dark: #3B5998;
+
+    --google-light: #FF4444;
+    --twitter-light: #10a8e4;
+    --facebook-light: #4668b1;
+
+
     --color-white: hsl(252, 30%, 100%);
     --color-light: hsl(252, 30%, 95%);
     --color-gray: hsl(252, 15%, 65%);

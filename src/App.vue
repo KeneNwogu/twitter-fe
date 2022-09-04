@@ -19,7 +19,7 @@
 	const route = useRoute();
 	const path = computed(() => route.path);
 	const allowed_navbar_paths = ['/']
-	const invalid_sidebar_paths = ['/register']
+	const invalid_sidebar_paths = ['/register', '/login']
 </script>
 
 <style setup>
