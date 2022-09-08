@@ -7,6 +7,8 @@
 			<UtilityBar v-if="!invalid_sidebar_paths.includes(path)" />
 		</div>
 	</main>
+	<CommentArea />
+
 </template>
 
 <script setup>
@@ -15,6 +17,10 @@
 	import SideBar from "@/components/SideBar.vue";
 	import UtilityBar from "@/components/UtilityBar.vue";
 	import NavBar from "./components/NavBar.vue";
+	import CommentArea from './components/CommentArea.vue';
+	// import HomeView from "@/views/HomeView.vue";
+	// import RegisterView from "@/views/RegisterView.vue";
+// import RegisterView from "@/views/RegisterView.vue";
 
 	const route = useRoute();
 	const path = computed(() => route.path);
