@@ -19,6 +19,7 @@
     --google-light: #FF4444;
     --twitter-light: #10a8e4;
     --facebook-light: #4668b1;
+    --shadow-color: 0deg 0% 63%;
 
 
     --color-white: hsl(252, 30%, 100%);
@@ -126,7 +127,6 @@ nav .search-bar input[type="search"]{
 nav .search-bar input[type="search"]::placeholder{
     color: var(--color-gray);
 }
-
 nav .create{
     display: flex;
     align-items: center;

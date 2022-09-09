@@ -1,78 +1,70 @@
 <template>
-    <div class="body">
-        <div class="banner-image">
-            <VueperSlides>
-                <VueperSlide
-                    v-for="(slide, i) in banner_slides"
-                    :image="slide.image"
-                    :content="slide.content"
-                    :key="i"
-                ></VueperSlide>
-            </VueperSlides>
+        <div class="headerDiv">
+            <i class="uil uil-twitter animation a1"></i>
+            <h2 class="animation a2">What's Happening now??</h2>
+            <h3 class = "animation a3">Let's Find Out, Login!</h3>
         </div>
         <div class="login-form">
             <form autocomplete="off">
-                <h3 class="form-header">Login</h3>
-                <div class="form-input">
-                    <label for="email">Email</label>
-                    <div class="input">
-                        <span><i class="uil uil-at"></i></span>
-                        <input type="text" name="email" id="email" autocomplete="off">
+                <div class="form">
+                    <div class="form-input animation a4"> 
+                        <input type="text" name="email"  required>
+                        <label >E-mail</label>
                     </div>
-                </div>
-                <div class="form-input">
-                    <label for="password">Password</label>
-                    <div class="input">
-                        <span><i class="uil uil-key-skeleton"></i></span>
-                        <input type="password" name="password" id="password" autocomplete="off">
+                    <div class="form-input animation a5">
+                        <input type="password" name="password" id="password" autocomplete="off" required>
+                        <label for="password">Password</label>
                         <span><i class="uil uil-eye"></i></span>
                     </div>
                 </div>
                 <div class="form-submit">
-                    <div class="form-input">
+                    <div class="form-input animation a6">
                         <div class="input">
                             <input type="checkbox" name="remember" id="#rember">
                             <label for="remember">Remember me</label>
                         </div>
                     </div>
-                    <input type="submit" value="LOGIN">
+                    <input type="submit" value="LOGIN" class="animation a6">
                 </div>
-                <p class="seperator">or</p>
+                <p class="signup-notice animation a7">Don't have an account? <a>Sign up</a></p>
+                <p class="seperator animation a8">or</p>
 
-                <a class="social-login facebook">
+                <a class="social-login facebook animation a9">
                     <span class="social-login__icon"><i class="uil uil-facebook"></i></span>
                     <p class="social-login__text">Login with Facebook</p>
                 </a>
-                <a class="social-login twitter">
+                <a class="social-login twitter animation a9">
                     <span class="social-login__icon"><i class="uil uil-twitter"></i></span>
                     <p class="social-login__text">Login with twitter</p>
                 </a>
-                <a class="social-login google">
+                <a class="social-login google animation a9">
                     <span class="social-login__icon"><i class="uil uil-google"></i></span>
                     <p class="social-login__text">Login with google</p>
                 </a>
             </form>
         </div>
-    </div>
 </template>
 
-<style>
-    .body{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        background: white;
-        /* gap: 40%; */
-        /* align-items: center; */
-    }
-    .body .banner-image, .body .login-form{
-        width: 50%;
-    }
+<style scoped>
+    @import url(https://fonts.googleapis.com/css?family=Lusitana:400,700); 
 
+     /* header div */
+     .headerDiv{
+        margin-left: 1.7rem;
+     }
+    .headerDiv i{
+        font-size: 4rem;
+        color: rgb(29, 155, 240);
+    }
+    .headerDiv h2{
+        font-family: inherit;
+        font-size: 2.7rem;
+    }
+    .headerDiv h3{
+        font-family: inherit;
+        margin-top: 0.1rem;
+        font-size: 1.8rem;
+    }
     .body .login-form{
         align-self: center;  
     }
@@ -80,53 +72,62 @@
     .login-form form{
         width: 50%;
         margin: 0 auto;
-        /* text-align: center; */
     }
-    .login-form form .form-header{
-        font-size: 1.5rem;
-        margin-bottom: 1.3rem;
+    .form{
+        padding-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
-    .banner-image .vueperslides{
-        width: 50%;
-        min-height: 100vh;
-        position: absolute;
-    }
-    /* .vueperslides .vueperslides__inner, {
-        min-height: 100vh;
-    } */
-
     .form-input{
         margin-bottom: 1rem;
     }
-
-    .form-input .input{
+    .form .form-input{
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+    .form-input input:focus,
+     .form-input input:valid{
+        border-bottom: 1px solid var(--color-black);
+    }
+    .form .form-input label{
+        position: absolute;
+        top:0;
+        left: 0;
+        padding: 10px 0;
+        font-family: 'Lusitana', sans-serif;
+        font-size: 16px;
+        color: black;
+        pointer-events: none;
+        transition: 0.5s;
+    }
+    .form .form-input input{
         width: 100%;
         display: flex;
-        padding: 0.3rem;
-        margin-top: 0.4rem;
+        font-size: 16px;
+        padding: 10px 0;
         align-items: center;
-        height: 3.2rem;
+        margin-bottom: 25px;
+        border: none;
+        border-bottom: 1px solid var(--color-gray);
+        outline: none;
+        background: transparent;
+        transition: 0.43s ease-in;
     }
-
-    .input span{
-        border: 0.5px solid gray;
-        height: 100%;
-        padding: 0.3rem;
-    }
-
-    .input span > i {
+    .form .form-input span i{
+        position: absolute;
+        right: 0;
+        top: 0;
         font-size: 1.3rem;
         color: gray;
     }
-
-    .form-input input[type="text"], .form-input input[type="password"]{
-        display: block;
-        padding: 0.3rem;
-        border: 0.5px solid gray;
-        /* outline: none; */
-        background: none !important;
-        height: 100%;
-        flex-grow: 1;
+     .form-input input:focus ~ label,
+    .form .form-input input:valid ~ label  {
+        top: -15px;
+        left: 0;
+        color: rgb(29, 155, 240);
+        font-size: 12px;
     }
 
     form .form-submit{
@@ -135,9 +136,7 @@
         align-items: center;
     }
 
-    .form-submit .form-input .input{
-        border: none;
-    }
+
 
     .form-submit .form-input .input > input{
         margin-right: 0.3rem;
@@ -151,7 +150,7 @@
 
     .seperator{
         text-align: center;
-        margin: 1.2rem 0;
+        margin: 0.7rem 0;
     }
 
     a.social-login{
@@ -185,7 +184,15 @@
         height: 100%;
         align-self: center;
     }
-
+    .signup-notice{
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .signup-notice a{
+        cursor: pointer;
+        color: rgb(29, 155, 240);
+        margin-left: 0.1rem;
+    }
 
     .social-login.google .social-login__text{
         background: var(--google-dark);
@@ -216,22 +223,92 @@
     .body .vueperslides__arrows {
         display: none;
     }
+    .animation{
+  animation-name: move;
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+  animation-delay: 2s;
+}
+
+.a1 {
+  animation-delay: 2s;
+}
+
+.a2 {
+  animation-delay: 2.2s;
+}
+
+.a3 {
+  animation-delay: 2.4s;
+}
+
+.a4 {
+  animation-delay: 2.8s;
+}
+
+.a5 {
+  animation-delay: 3s;
+}
+
+.a6 {
+  animation-delay: 3.2s;
+}
+.a7{
+  animation-delay: 3.4s;
+}
+.a8{
+  animation-delay: 3.6s;
+}
+.a9{
+  animation-delay: 3.8s;
+}
+.a10{
+    animation-delay: 4s;
+}
+.a11{
+    animation-delay: 4.2s;
+}
+@keyframes move {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}  
+@media only screen and (max-width: 1024px){
+    .headerDiv h2{
+        font-size: 2.2rem;
+    }
+    .headerDiv h3{
+        font-size: 1.5rem;
+    }
+    .login-form form{
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 414px){
+    .headerDiv{
+        margin-left: 0.7rem;
+        margin-top: 0;
+    }
+    .headerDiv i{
+        font-size: 3.8rem;
+    }
+    .headerDiv h2{
+        font-size: 2rem;
+    }
+    .login-form form{
+        width: 80%;
+    }
+}
 </style>
 
 <script setup>
-    import { VueperSlides, VueperSlide } from 'vueperslides';
-    const banner_slides = [
-        {
-            content: '<h3 style="color: white">Create and share your tweets.</h3>',
-            image: require('@/assets/erik-mclean-cYQtW1HTpbg-unsplash.jpg')
-        },
-        {
-            content: '<h3 style="color: white">Interact with people all over the world</h3>',
-            image: require('@/assets/zac-durant-_6HzPU9Hyfg-unsplash.jpg')
-        },
-        {
-            content: '<h3 style="color: white">Get Started!</h3>',
-            image: require('@/assets/becca-tapert--A_Sx8GrRWg-unsplash.jpg')
-        }
-    ]
+
 </script>
