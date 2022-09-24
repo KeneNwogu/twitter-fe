@@ -1,6 +1,6 @@
 <template>
   <div class="headerDiv">
-    <i class="uil uil-twitter animation a1"></i>
+    <img src="@/assets/TwitterIcon.png" alt="twitter" class="signup-logo animation a1"/>
     <h2 class="animation a2">What's Happening now??</h2>
     <h3 class = "animation a3">Join Twitter today...</h3>
   </div>
@@ -48,39 +48,46 @@
   </div>
   <div class="footerDiv">
     <button class="sign-up animation a8">Sign Up</button>
-    <p class="animation a9">already have an account? <a>Login</a></p>
+    <p class="animation a9">Already have an account? <a>Login</a></p>
   </div>
 </template>
 
 <style scoped>
   @import url(https://fonts.googleapis.com/css?family=Lusitana:400,700); 
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
   /* header div */
   .headerDiv{
-    margin-top: 1.7rem;
-    margin-left: 1.7rem;
+    width: 83%;
+    margin:0 auto;
+    /* margin-top: 0.7rem; */
   }
-  .headerDiv i{
-    font-size: 4rem;
-    color: rgb(29, 155, 240);
+  .signup-logo{
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+
   }
   .headerDiv h2{
-    margin-top: 0.1rem; 
-    font-family: inherit;
-    /* text-transform: uppercase; */
-    font-size: 2.7rem;
+    margin-top: 30px; 
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 2.5rem;
   }
   .headerDiv h3{
-    font-family: inherit;
+    font-family: Inter, 'san-serif';
+    font-weight: 400;
     margin-top: 0.1rem;
     font-size: 1.8rem;
   }
   /* form Div */
   .formDiv{
     margin-top: 2rem;
-    margin-left: 1.7rem;
+    /* margin-left: 1.7rem; */
   }
   .user-details{
-    width: 80%;
+    width: 83%;
+    margin-left: auto;
+    margin-right: auto;
   }
   .nameDiv, .digitsDiv, .passwordDiv{
     display: flex;
@@ -90,7 +97,11 @@
     width: 48%;
   }
   .digitsDiv .input-box:last-child{
-    margin-top: -3px;
+    margin-top: -2px;
+  }
+  .digitsDiv .input-box:last-child input{
+    padding-top: 10px;
+    padding-bottom: 11px;
   }
 .input-box{
   position: relative;
@@ -98,56 +109,68 @@
 
 .input-box input:focus ~ label,
  .input-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: rgb(29, 155, 240);
-  font-size: 12px;
+  top: -8px;
+  left: 15px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 11px;
 }
 .input-box input{
   width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
+  padding: 15px 15px;
+  padding-bottom: 8px;
+  font-size: 14px;
   color: black;
   margin-bottom: 30px;
   border: none;
-  border-bottom: 1px solid var(--color-gray);
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   outline: none;
   background: transparent;
   transition: 0.43s ease-in;
 }
 .input-box input:focus,
 .input-box input:valid{
-border-bottom: 1px solid var(--color-black);
+border: 1.5px solid rgba(0, 0, 0, 0.7);
 }
 .input-box label{
   position: absolute;
-  top:0;
-  left: 0;
+  top: 2px;
+  left: 15px;
   padding: 10px 0;
-  font-family: 'Lusitana', sans-serif;
-  font-size: 16px;
-  color: black;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
   pointer-events: none;
   transition: 0.5s;
 }
 /* footerDiv */
 .footerDiv{
-  margin-left: 1.7rem;
-  width: 80%;
+  /* margin-left: 1.7rem; */
+  width: 83%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 .sign-up{
   outline: none;
   border: none;
-  background-color: rgb(29, 155, 240);
-  padding: 0.7rem 4.5rem;
+  background: #03A9F4;
+  padding: 12px 0;
+  width: 100%;
   color: var(--color-white);
-  border-radius: 30px;
+  border-radius: 12px;
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 1rem;
   margin-bottom: 0.3rem;
   cursor: pointer;
+}
+.footerDiv p{
+  margin-top: 0.1rem;
+  font-weight: 400;
+  font-family: 'Inter';
+  font-size: 0.9rem;
 }
 .footerDiv p a{
   color: rgb(29, 155, 240);
@@ -218,13 +241,12 @@ border-bottom: 1px solid var(--color-black);
 @media only screen and (max-width: 414px){
   .headerDiv{
     margin-left: 0.7rem;
-    margin-top: 0;
+    margin-top: 10px;
   }
-  .headerDiv i{
-    font-size: 3.8rem;
-  }
+
   .headerDiv h2{
     font-size: 2rem;
+    margin-top: 10px;
   }
   .formDiv{
     margin-left: 0;
@@ -232,7 +254,7 @@ border-bottom: 1px solid var(--color-black);
     /* margin-right: 0.7rem; */
   }
   .user-details{
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
   }
   .nameDiv, .passwordDiv{
@@ -244,8 +266,7 @@ border-bottom: 1px solid var(--color-black);
     width: 100%;
   }
   .footerDiv{
-    margin-left: 0;
-    width: 100%;
+    width: 95%;
   }
   .sign-up{
     margin-bottom: 0.5rem;

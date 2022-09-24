@@ -62,7 +62,6 @@
 .comment-area{
   width: 38%;
   max-height: 70vh;
-  /* overflow-y: scroll; */
   scroll-behavior: smooth;
   overscroll-behavior: contain;
   margin-left: 2.5rem;

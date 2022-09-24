@@ -61,7 +61,7 @@
         right: 0.4rem;
         background: none;
         max-height: 15rem;
-        z-index: 10;
+        z-index: 100;
     }
     
     .mobile.toolbar .overlay-open{
@@ -73,7 +73,7 @@
         cursor: pointer;
         text-align: center;
         position: relative;
-        z-index: 200;
+        /* z-index: 200; */
     }
     .mobile.toolbar .overlay-open i{
         font-size: 1.4rem;
@@ -94,7 +94,7 @@
         align-items: center;
         gap: 0.5rem;
         margin-bottom: 1rem;
-        z-index: 20;
+        z-index: 100;
     }
 
     .menu-overlay{
@@ -103,17 +103,18 @@
         background: rgba(107, 106, 106, 0.5);
         position: absolute;
         top: 0;
-        z-index: 15;
+        z-index: 500;
     }
 
     /* ===== MOBILE SIDEBAR ===== */
     .mobile.sidebar{
         position: absolute;
         top: 0;
-        z-index: 70;
+        z-index: 500 !important;
         min-height: 100vh;
         width: 90vw;
         margin: 0;
+        /* display: none; */
         background: var(--color-white);
         /* padding-left: 1.7rem; */
         padding-top: 2rem;
