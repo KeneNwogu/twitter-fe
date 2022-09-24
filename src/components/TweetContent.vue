@@ -48,6 +48,7 @@
     .tweet-container .post-card .post-details .post-details__comments {
         display: none;
     }
+
 </style>
 
 <script setup>

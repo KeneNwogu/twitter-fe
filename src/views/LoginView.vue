@@ -50,27 +50,32 @@
 
      /* header div */
      .headerDiv{
-        margin-left: 1.7rem;
-     }
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+   }
     .headerDiv i{
+        display: none;
         font-size: 4rem;
         color: rgb(29, 155, 240);
     }
     .headerDiv h2{
         font-family: inherit;
-        font-size: 2.7rem;
+        font-size: 2.1rem;
+        font-weight: 500;
     }
     .headerDiv h3{
         font-family: inherit;
         margin-top: 0.1rem;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        font-weight: 300;
     }
     .body .login-form{
         align-self: center;  
     }
 
     .login-form form{
-        width: 50%;
+        width: 70%;
         margin: 0 auto;
     }
     .form{
@@ -134,18 +139,31 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+         height: 37px;
     }
-
-
+    .form-submit .form-input{
+        margin:0;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center; 
+    }
+    .form-submit .form-input .input{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     .form-submit .form-input .input > input{
         margin-right: 0.3rem;
+        cursor: pointer;
     }
 
     input[type="submit"]{
         padding: 0.7rem 1.3rem;
         color: white;
         background: var(--bootstrap-primary);
+        cursor: pointer;
     }
 
     .seperator{
@@ -159,6 +177,7 @@
         align-items: center;
         height: 2.6rem;
         margin-bottom: 1rem;
+        cursor: pointer;
         /* padding: 0.4rem 0; */
     }
 
@@ -193,6 +212,7 @@
         color: rgb(29, 155, 240);
         margin-left: 0.1rem;
     }
+    
 
     .social-login.google .social-login__text{
         background: var(--google-dark);
@@ -213,34 +233,24 @@
     .social-login.facebook .social-login__icon{
         background: var(--facebook-light);
     }
-
-    .body .vueperslides__parallax-wrapper {
-        position: relative;
-        overflow: hidden;
-        min-height: 100vh !important;
-    }
-
-    .body .vueperslides__arrows {
-        display: none;
-    }
     .animation{
-  animation-name: move;
-  animation-duration: 0.8s;
-  animation-fill-mode: both;
-  animation-delay: 2s;
-}
+    animation-name: move;
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+    animation-delay: 2s;
+    }
 
-.a1 {
-  animation-delay: 2s;
-}
+    .a1 {
+    animation-delay: 2s;
+    }
 
-.a2 {
-  animation-delay: 2.2s;
-}
+    .a2 {
+    animation-delay: 2.2s;
+    }
 
-.a3 {
-  animation-delay: 2.4s;
-}
+    .a3 {
+    animation-delay: 2.4s;
+    }
 
 .a4 {
   animation-delay: 2.8s;
@@ -272,13 +282,13 @@
   0% {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-40px);
+    /* transform: translateY(-40px); */
   }
 
   100% {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    /* transform: translateY(0); */
   }
 }  
 @media only screen and (max-width: 1024px){

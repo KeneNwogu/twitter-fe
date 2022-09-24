@@ -11,7 +11,7 @@
             </button>
         </form>
         <div class="post-container" v-if="tweets">
-            <!-- tweet component v-for -->
+            tweet component v-for
             <TweetContent v-for="tweet in tweets" :key="tweet.id" :tweet="tweet"/>
         </div>
         <div class="preloader" v-else></div>
@@ -33,5 +33,4 @@
             tweets.value = response.data.results
         }
     })
-    
 </script>

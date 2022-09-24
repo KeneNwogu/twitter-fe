@@ -4,15 +4,15 @@
             <i class="uil uil-twitter"></i>
         </div>
         <div class="contentDiv">
-            <!-- <SignupForm /> -->
-            <LoginView />
+            <SignupForm />
+            <!-- <LoginView /> -->
         </div>
     </div>
 </template>
 
 <script setup>
-    // import SignupForm from './SignupForm.vue';
-    import LoginView from './LoginView.vue';
+    import SignupForm from './SignupForm.vue';
+    // import LoginView from './LoginView.vue';
 </script>
 
 <style scoped>
@@ -39,13 +39,15 @@
 }
 .imgDiv i{
     font-size: 27rem;
-    mix-blend-mode: color-burn;
+    mix-blend-mode: normal;
+    opacity: 0.9;
 }
 .contentDiv{
     animation-name: left;
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-delay: 1s;
+    margin: auto 0;
     /* display: none; */
 }
 @keyframes left {
@@ -106,9 +108,6 @@
             /* padding: 20px 40px; */
             width: 100%;
         }
-    }
-    .contentDiv{
-        visibility: hidden;
     }
 }
 </style>
