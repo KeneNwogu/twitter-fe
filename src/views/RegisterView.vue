@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-    import SignupForm from './SignupForm.vue';
+    import SignupForm from '../components/SignupForm.vue';
     // import LoginView from './LoginView.vue';
 </script>
 
@@ -20,6 +20,11 @@
     display: flex;
     height: fit-content;
     background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
 .imgDiv{
     position: sticky;
