@@ -3,6 +3,7 @@ import HomeView from "@/views/HomeView.vue";
 import TweetView from "@/views/TweetView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import LoginView from "@/views/LoginView.vue";
+import ProfileView from "@/views/ProfileView.vue";
 
 const routes = [
     {
@@ -24,6 +25,11 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: LoginView
+    },
+    {
+        path: '/:user_id/profile',
+        name: 'Profile',
+        component: ProfileView
     }
 ]
 

@@ -1,15 +1,18 @@
 <template>
     <div class="post-card">  
         <div class="post-info">
-            <div class="post-info__user">
-                <div class="profile-photo">
-                    <img src="@/assets/logo.png" alt="">
+            <router-link :to="{ name: 'Profile', params: { user_id: tweet.user.id } }">
+                <div class="post-info__user">
+                    <div class="profile-photo">
+                        <img src="@/assets/logo.png" alt="">
+                    </div>
+                    <div class="post-info__userInfo">
+                        <p>{{ tweet.user.fullname }}</p> 
+                        <small class="post-info__locale">@{{ tweet.user.username }}</small>
+                    </div>
                 </div>
-                <div class="post-info__userInfo">
-                    <p>{{ tweet.user.fullname }}</p> 
-                    <small class="post-info__locale">@{{ tweet.user.username }}</small>
-                </div>
-            </div>
+            </router-link>
+            
             <span class="post-info__options">
                 <i class="uil uil-ellipsis-v"></i>
             </span>

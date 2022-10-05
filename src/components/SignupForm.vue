@@ -4,50 +4,74 @@
     <h2 class="animation a2">What's Happening now??</h2>
     <h3 class = "animation a3">Join Twitter today...</h3>
   </div>
+
   <div class="formDiv">
+
     <form action="/registration" method="post">
       <div class="user-details">
         <div class="nameDiv">
-          <div class="input-box animation a4">
+          <div class="input-box animation a4" :class="form.name.isValid.value ? 'error' : ''">
             <input type="text" name="name" v-model="form.name.field.value" required>
             <label>Name</label>
+            <!-- error message goes here -->
+            <p v-if="form.name.error.value">{{ form.name.error.value }}</p>
+            <!-- end error message  -->
           </div>
-          <div class="input-box animation a4">
+          <div class="input-box animation a4" :class="form.username.isValid.value ? 'error' : ''">
             <input type="text" name="username" v-model="form.username.field.value" required>
             <label>Username</label>
+            <!-- error message goes here -->
+            <p v-if="form.username.error.value">{{ form.username.error.value }}</p>
+            <!-- end error message  -->
           </div>
         </div>
         <div class="emailDiv">
-          <div class="input-box animation a5">
+          <div class="input-box animation a5" :class="form.email.isValid.value ? 'error' : ''">
             <input type="text" name="email" v-model="form.email.field.value" required>
             <label>E-mail</label>
+            <!-- error message goes here -->
+            <p v-if="form.email.error.value">{{ form.email.error.value }}</p>
+            <!-- end error message  -->
           </div>
         </div>
         <div class="digitsDiv">
-            <div class="input-box animation a6">
+            <div class="input-box animation a6" :class="form.phone.isValid.value ? 'error' : ''">
               <input type="text" name="phone" v-model="form.phone.field.value" required>
               <label>Phone Number</label>
+              <!-- error message goes here -->
+              <p v-if="form.phone.error.value">{{ form.phone.error.value }}</p>
+              <!-- end error message  -->
             </div>
-            <div class="input-box animation a6">
+        
+            <div class="input-box animation a6" :class="form.birth_date.isValid.value ? 'error' : ''">
               <input type="date" name="birth_date" v-model="form.birth_date.field.value" placeholder="name" required>
-              <!-- <label>Date of Birth</label> -->
-            </div>
+              <!-- error message goes here -->
+              <p v-if="form.birth_date.error.value">{{ form.birth_date.error.value }}</p>
+              <!-- end error message  -->
+            </div> 
         </div>
         <div class="passwordDiv">
-          <div class="input-box animation a7">
+          <div class="input-box animation a7" :class="form.password.isValid.value ? 'error' : ''">
             <input type="password" name="password" v-model="form.password.field.value" required>
             <label>Password</label>
+            <!-- error message goes here -->
+            <p v-if="form.password.error.value">{{ form.password.error.value }}</p>
+            <!-- end error message  -->
           </div>
-          <div class="input-box animation a7">
+          
+          <div class="input-box animation a7" :class="form.confirm_password.isValid.value ? 'error' : ''">
             <input type="password" name="confirm_password" v-model="form.confirm_password.field.value" required>
             <label>Confirm Password</label>
+            <!-- error message goes here -->
+            <p v-if="form.confirm_password.error.value">{{ form.confirm_password.error.value }}</p>
+            <!-- end error message  -->
           </div>
         </div>  
       </div>
     </form>
   </div>
   <div class="footerDiv">
-    <button class="sign-up animation a8">Sign Up</button>
+    <button class="sign-up animation a8" @mouseover="validateForm">Sign Up</button>
     <p class="animation a9">Already have an account? <a>Login</a></p>
   </div>
 </template>
@@ -63,6 +87,15 @@ export default {
         isValid: ref(true),
         validator(){
           // check length and etc
+          this.field.value = this.field.value.trim()
+          if(this.field.value.length < 5){
+            this.isValid.value = false
+            this.error.value = 'name is too short'
+          }
+          else{
+            this.isValid.value = true
+            this.error.value = null
+          }
         }
       },
       username: { 
@@ -71,12 +104,32 @@ export default {
         isValid: ref(true),
         validator(){
           // check for length and etc
+          this.field.value = this.field.value.trim()
+          if(this.field.value.length < 5){
+            this.isValid.value = false
+            this.error.value = 'username is too short'
+          }
+          else{
+            this.isValid.value = true
+            this.error.value = null
+          }
         }
       },
       email: { 
         field: ref(''),
         error: ref(null),
-        isValid: ref(true)
+        isValid: ref(true),
+        validator(){
+          this.isValid.value = this.field.value.toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+          if(!this.isValid.value) this.error.value = 'invalid email'; 
+          else {
+            this.isValid.value = true
+            this.error.value = null
+          }
+        }
       },
       phone: { 
         field: ref(''),
@@ -84,6 +137,16 @@ export default {
         isValid: ref(true),
         validator(){
           // check for valid phone number
+          if(this.field.value.length != 11 || !this.field.value.match(
+            /^[0-9]+/
+          )){
+            this.isValid.value = false
+            this.error.value = 'invalid phone number'
+          }
+          else{
+            this.isValid.value = true
+            this.error.value = null
+          }
         }
       },
       birth_date: { 
@@ -92,6 +155,16 @@ export default {
         isValid: ref(true),
         validator(){
           // check that age is greater than 13
+          let current_date = new Date();
+          let year = parseInt(this.field.value.split('-')[0])
+          if (current_date.getFullYear() - year <= 13){
+            this.isValid.value = false;
+            this.error.value = 'age must be greater than 13'
+          }
+          else{
+            this.isValid.value = true
+            this.error.value = null
+          }
         }
       },
       password: { 
@@ -100,6 +173,15 @@ export default {
         isValid: ref(true),
         validator(){
           // check password length
+          this.field.value = this.field.value.trim()
+          if(this.field.value.length < 8){
+            this.isValid.value = false
+            this.error.value = 'password length is too short'
+          }
+          else{
+            this.isValid.value = true
+            this.error.value = null
+          }
         }
       }, 
       confirm_password: { 
@@ -107,22 +189,42 @@ export default {
         error: ref(null),
         isValid: ref(true),
         validator() {
+          this.field.value = this.field.value.trim()
           if(form.password.field.value !== this.field.value){
             this.isValid.value = false
+            this.error.value = 'confirm password not equal to password'
+          }
+          else{
+            this.isValid.value = true
+            this.error.value = null
           }
         }
       }
     }
 
-    
-
-    // let is_first_instance = true // flag to prevent validation on page load
     for (const element in form) {
       let form_element = form[element]
-      watch(form_element.field, () => form_element.validator())
+      watch(form_element.field, () => {
+        form_element.validator()
+      })
+    }
+
+    const canSubmit = ref(false)
+
+    function validateForm(){
+      let field_valid_states = []
+      for (const element in form) {
+        let form_element = form[element]
+        form_element.validator()
+        field_valid_states.push(form_element.isValid.value)
+      }
+
+      if (field_valid_states.every((value) => value == true))
+        canSubmit.value = true
+      else canSubmit.value = false
     }
     
-    return { form }
+    return { form, canSubmit, validateForm }
   },
 }
 </script>
@@ -180,6 +282,13 @@ export default {
   }
 .input-box{
   position: relative;
+}
+
+/* !important: Error message styling is here */
+.input-box > p{
+  position: absolute;
+  bottom: 8px;
+  padding-left: 0.6rem;
 }
 
 .input-box input:focus ~ label,

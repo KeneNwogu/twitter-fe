@@ -5,14 +5,17 @@
             <h3 class = "animation a3">Let's Find Out, Login!</h3>
         </div>
         <div class="login-form">
-            <form autocomplete="off">
+            <div class="error" v-if="error.message.length > 0">
+                <p>{{ error.message }}</p>
+            </div>
+            <form autocomplete="off" @submit.prevent="loginSubmit">
                 <div class="form">
                     <div class="form-input animation a4"> 
-                        <input type="text" name="email"  required>
+                        <input type="text" name="email" v-model="form.email" required>
                         <label >E-mail</label>
                     </div>
                     <div class="form-input animation a5">
-                        <input type="password" name="password" id="password" autocomplete="off" required>
+                        <input type="password" name="password" id="password" v-model="form.password" autocomplete="off" required>
                         <label for="password">Password</label>
                         <span><i class="uil uil-eye"></i></span>
                     </div>
@@ -24,7 +27,8 @@
                             <label for="remember">Remember me</label>
                         </div>
                     </div>
-                    <input type="submit" value="LOGIN" class="animation a6">
+                    <!-- disabled class -->
+                    <input type="submit" :class="form.submitted ? 'disabled' : ''" value="LOGIN" class="animation a6" :disabled="form.submitted">
                 </div>
                 <p class="signup-notice animation a7">Don't have an account? <a>Sign up</a></p>
                 <p class="seperator animation a8">or</p>
@@ -44,6 +48,47 @@
             </form>
         </div>
 </template>
+
+<script setup>
+    import { ref } from 'vue';
+    import { useStore } from 'vuex';
+
+    const store = useStore();
+    let form = ref({ email: '', password: '', submitted: false, success: false })
+
+    let error = ref({ message: '' })
+
+    function loginSubmit(){
+        form.value.submitted = true
+        fetch('https://tweeter-apiclone.herokuapp.com/api/v1/users/get-token', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: form.value.email,
+                password: form.value.password
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(async (res) => {
+                if (res.status != 200) {
+                    throw Error((await res.json()).detail)
+                }
+                return res.json()
+            })
+            .then((data) => {
+                form.value.success = true;
+                store.commit('SET_USER_TOKEN', data)
+
+                // TODO: perform redirect to home page
+            })
+            .catch((e) => {
+                form.value.submitted = false
+                console.log(e.message.toString())
+                error.value.message = e.message
+            })
+    }
+</script>
 
 <style scoped>
     @import url(https://fonts.googleapis.com/css?family=Lusitana:400,700); 
@@ -318,7 +363,3 @@
     }
 }
 </style>
-
-<script setup>
-
-</script>

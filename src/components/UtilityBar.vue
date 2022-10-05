@@ -18,14 +18,14 @@
                     <span class="tool-icon"><i class="uil uil-tachometer-fast-alt"></i></span>
                     <span class="tool__expand">Dashboard</span>
                 </a>
-                <a class="tool">
+                <router-link class="tool" to="/login">
                     <span class="tool-icon"><i class="uil uil-sign-in-alt"></i></span>
                     <span class="tool__expand">Sign In</span>
-                </a>
-                <a class="tool">
+                </router-link>
+                <router-link class="tool" to="/register">
                     <span class="tool-icon"><i class="uil uil-user-plus"></i></span>
                     <span class="tool__expand">Sign Up</span>
-                </a>
+                </router-link>
 
                 <a class="tool">
                     <span class="tool-icon"><i class="uil uil-sign-out-alt"></i></span>
