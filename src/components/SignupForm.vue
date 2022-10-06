@@ -14,14 +14,14 @@
             <input type="text" name="name" v-model="form.name.field.value" required>
             <label>Name</label>
             <!-- error message goes here -->
-            <p v-if="form.name.error.value">{{ form.name.error.value }}</p>
+            <p class="error-message" v-if="form.name.error.value">{{ form.name.error.value }}</p>
             <!-- end error message  -->
           </div>
           <div class="input-box animation a4" :class="form.username.isValid.value ? 'error' : ''">
             <input type="text" name="username" v-model="form.username.field.value" required>
             <label>Username</label>
             <!-- error message goes here -->
-            <p v-if="form.username.error.value">{{ form.username.error.value }}</p>
+            <p class="error-message" v-if="form.username.error.value">{{ form.username.error.value }}</p>
             <!-- end error message  -->
           </div>
         </div>
@@ -30,7 +30,7 @@
             <input type="text" name="email" v-model="form.email.field.value" required>
             <label>E-mail</label>
             <!-- error message goes here -->
-            <p v-if="form.email.error.value">{{ form.email.error.value }}</p>
+            <p class="error-message" v-if="form.email.error.value">{{ form.email.error.value }}</p>
             <!-- end error message  -->
           </div>
         </div>
@@ -39,14 +39,14 @@
               <input type="text" name="phone" v-model="form.phone.field.value" required>
               <label>Phone Number</label>
               <!-- error message goes here -->
-              <p v-if="form.phone.error.value">{{ form.phone.error.value }}</p>
+              <p class="error-message" v-if="form.phone.error.value">{{ form.phone.error.value }}</p>
               <!-- end error message  -->
             </div>
         
             <div class="input-box animation a6" :class="form.birth_date.isValid.value ? 'error' : ''">
               <input type="date" name="birth_date" v-model="form.birth_date.field.value" placeholder="name" required>
               <!-- error message goes here -->
-              <p v-if="form.birth_date.error.value">{{ form.birth_date.error.value }}</p>
+              <p class="error-message" v-if="form.birth_date.error.value">{{ form.birth_date.error.value }}</p>
               <!-- end error message  -->
             </div> 
         </div>
@@ -55,7 +55,7 @@
             <input type="password" name="password" v-model="form.password.field.value" required>
             <label>Password</label>
             <!-- error message goes here -->
-            <p v-if="form.password.error.value">{{ form.password.error.value }}</p>
+            <p class="error-message" v-if="form.password.error.value">{{ form.password.error.value }}</p>
             <!-- end error message  -->
           </div>
           
@@ -63,7 +63,7 @@
             <input type="password" name="confirm_password" v-model="form.confirm_password.field.value" required>
             <label>Confirm Password</label>
             <!-- error message goes here -->
-            <p v-if="form.confirm_password.error.value">{{ form.confirm_password.error.value }}</p>
+            <p class="error-message" v-if="form.confirm_password.error.value">{{ form.confirm_password.error.value }}</p>
             <!-- end error message  -->
           </div>
         </div>  
@@ -312,6 +312,9 @@ export default {
   background: transparent;
   transition: 0.43s ease-in;
 }
+.error input{
+  border: 1.5px solid var(--color-danger);
+}
 .input-box input:focus,
 .input-box input:valid{
 border: 1.5px solid rgba(0, 0, 0, 0.7);
@@ -325,6 +328,9 @@ border: 1.5px solid rgba(0, 0, 0, 0.7);
   color: rgba(0, 0, 0, 0.5);
   pointer-events: none;
   transition: 0.5s;
+}
+.error-message{
+  color: var(--color-danger);
 }
 /* footerDiv */
 .footerDiv{
