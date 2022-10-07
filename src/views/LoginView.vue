@@ -1,15 +1,16 @@
 <template>
         <div class="headerDiv">
-            <i class="uil uil-twitter animation a1"></i>
+
+            <!-- <i class="uil uil-twitter animation a1"></i> -->
             <h2 class="animation a2">What's Happening now??</h2>
             <h3 class = "animation a3">Let's Find Out, Login!</h3>
         </div>
         <div class="login-form">
-            <div class="error" v-if="error.message.length > 0">
-                <p>{{ error.message }}</p>
-            </div>
             <form autocomplete="off" @submit.prevent="loginSubmit">
                 <div class="form">
+                    <div class="error" v-if="error.message.length > 0">
+                        <p>{{ error.message }}</p>
+                    </div>
                     <div class="form-input animation a4"> 
                         <input type="text" name="email" v-model="form.email" required>
                         <label >E-mail</label>
@@ -99,7 +100,15 @@
         margin-right: auto;
         width: 70%;
    }
-    .headerDiv i{
+   .error{
+    background-color: rgba(249,31,31,0.1);
+    margin-bottom: 1.2rem;
+    padding: 0.6rem 1.6rem;
+    border-radius: 10px;
+    color: var(--color-danger);
+    width: fit-content;
+   }
+     .headerDiv i{
         display: none;
         font-size: 4rem;
         color: rgb(29, 155, 240);
@@ -124,7 +133,7 @@
         margin: 0 auto;
     }
     .form{
-        padding-top: 1.5rem;
+        padding-top: 1.2rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -156,7 +165,7 @@
         width: 100%;
         display: flex;
         font-size: 16px;
-        padding: 10px 0;
+        padding: 9px 0;
         align-items: center;
         margin-bottom: 25px;
         border: none;
@@ -174,7 +183,7 @@
     }
      .form-input input:focus ~ label,
     .form .form-input input:valid ~ label  {
-        top: -15px;
+        top: -21px;
         left: 0;
         color: rgb(29, 155, 240);
         font-size: 12px;
