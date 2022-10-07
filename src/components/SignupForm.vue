@@ -10,14 +10,14 @@
     <form action="/registration" method="post">
       <div class="user-details">
         <div class="nameDiv">
-          <div class="input-box animation a4" :class="form.name.isValid.value ? 'error' : ''">
+          <div class="input-box animation a4" :class="!form.name.isValid.value ? 'error' : ''">
             <input type="text" name="name" v-model="form.name.field.value" required>
             <label>Name</label>
             <!-- error message goes here -->
             <p class="error-message" v-if="form.name.error.value">{{ form.name.error.value }}</p>
             <!-- end error message  -->
           </div>
-          <div class="input-box animation a4" :class="form.username.isValid.value ? 'error' : ''">
+          <div class="input-box animation a4" :class="!form.username.isValid.value ? 'error' : ''">
             <input type="text" name="username" v-model="form.username.field.value" required>
             <label>Username</label>
             <!-- error message goes here -->
@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="emailDiv">
-          <div class="input-box animation a5" :class="form.email.isValid.value ? 'error' : ''">
+          <div class="input-box animation a5" :class="!form.email.isValid.value ? 'error' : ''">
             <input type="text" name="email" v-model="form.email.field.value" required>
             <label>E-mail</label>
             <!-- error message goes here -->
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="digitsDiv">
-            <div class="input-box animation a6" :class="form.phone.isValid.value ? 'error' : ''">
+            <div class="input-box animation a6" :class="!form.phone.isValid.value ? 'error' : ''">
               <input type="text" name="phone" v-model="form.phone.field.value" required>
               <label>Phone Number</label>
               <!-- error message goes here -->
@@ -43,7 +43,7 @@
               <!-- end error message  -->
             </div>
         
-            <div class="input-box animation a6" :class="form.birth_date.isValid.value ? 'error' : ''">
+            <div class="input-box animation a6" :class="!form.birth_date.isValid.value ? 'error' : ''">
               <input type="date" name="birth_date" v-model="form.birth_date.field.value" placeholder="name" required>
               <!-- error message goes here -->
               <p class="error-message" v-if="form.birth_date.error.value">{{ form.birth_date.error.value }}</p>
@@ -51,7 +51,7 @@
             </div> 
         </div>
         <div class="passwordDiv">
-          <div class="input-box animation a7" :class="form.password.isValid.value ? 'error' : ''">
+          <div class="input-box animation a7" :class="!form.password.isValid.value ? 'error' : ''">
             <input type="password" name="password" v-model="form.password.field.value" required>
             <label>Password</label>
             <!-- error message goes here -->
@@ -59,7 +59,7 @@
             <!-- end error message  -->
           </div>
           
-          <div class="input-box animation a7" :class="form.confirm_password.isValid.value ? 'error' : ''">
+          <div class="input-box animation a7" :class="!form.confirm_password.isValid.value ? 'error' : ''">
             <input type="password" name="confirm_password" v-model="form.confirm_password.field.value" required>
             <label>Confirm Password</label>
             <!-- error message goes here -->
@@ -71,7 +71,7 @@
     </form>
   </div>
   <div class="footerDiv">
-    <button class="sign-up animation a8" @mouseover="validateForm">Sign Up</button>
+    <button class="sign-up animation a8" @click="validateForm">Sign Up</button>
     <p class="animation a9">Already have an account? <a>Login</a></p>
   </div>
 </template>
@@ -87,15 +87,53 @@ export default {
         isValid: ref(true),
         validator(){
           // check length and etc
+          let names = this.field.value.split(' ');
+
+          if (names.length != 2){
+            this.isValid.value = false
+            this.error.value = 'split name into first and last name'
+            return
+          }
+
+          let [first_name, last_name] = names
+
+          form.first_name.field.value = first_name;
+          form.last_name.field.value = last_name;
+
+          if (form.first_name.validator() && form.last_name.validator()){
+            this.isValid.value = true
+          } 
+        }
+      },
+      first_name: {
+        field: ref(''),
+        isValid: ref(false),
+        validator(){
           this.field.value = this.field.value.trim()
           if(this.field.value.length < 5){
-            this.isValid.value = false
-            this.error.value = 'name is too short'
+            form.name.isValid.value = false;
+            form.name.error.value = 'firstname is too short'
+            return false
           }
-          else{
-            this.isValid.value = true
-            this.error.value = null
+          form.name.error.value = ''
+          this.isValid.value = true
+          return true
+        }
+      },
+      last_name: {
+        field: ref(''),
+        isValid: ref(false),
+        validator(){
+          this.field.value = this.field.value.trim()
+          console.log(this.field.value.length, 'last_name')
+          if(this.field.value.length < 3){
+            form.name.isValid.value = false
+            form.name.error.value = 'lastname is too short'
+            return false 
           }
+          form.name.error.value = '' || form.name.error.value
+          this.isValid.value = true
+          return true
         }
       },
       username: { 
@@ -192,7 +230,7 @@ export default {
           this.field.value = this.field.value.trim()
           if(form.password.field.value !== this.field.value){
             this.isValid.value = false
-            this.error.value = 'confirm password not equal to password'
+            this.error.value = 'value not equal to password'
           }
           else{
             this.isValid.value = true
@@ -210,7 +248,7 @@ export default {
     }
 
     const canSubmit = ref(false)
-
+    
     function validateForm(){
       let field_valid_states = []
       for (const element in form) {
@@ -219,11 +257,36 @@ export default {
         field_valid_states.push(form_element.isValid.value)
       }
 
-      if (field_valid_states.every((value) => value == true))
+      if (field_valid_states.every((value) => value == true)){
         canSubmit.value = true
+        registerUser()
+          .then(async (res) => {
+            if (res.status != 201) {
+              throw Error((await res.json()).detail)
+            }
+            return res.json()
+          })
+          .then(() => {
+            // TODO: redirect users
+          });
+      }
+        
       else canSubmit.value = false
     }
-    
+    function registerUser(){
+      const submissionForm = {}
+      for (const element in form) {
+        submissionForm[element] = form[element].field.value
+      }
+      delete submissionForm.name
+      return fetch('https://tweeter-apiclone.herokuapp.com/api/v1/users/', {
+        method: 'POST',
+          body: JSON.stringify(submissionForm),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+      })
+    }
     return { form, canSubmit, validateForm }
   },
 }
@@ -312,8 +375,8 @@ export default {
   background: transparent;
   transition: 0.43s ease-in;
 }
-.error input{
-  border: 1.5px solid var(--color-danger);
+.error input, .error input:focus{
+  border: 1.5px solid var(--color-danger) !important;
 }
 .input-box input:focus,
 .input-box input:valid{
