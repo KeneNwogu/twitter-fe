@@ -1,11 +1,12 @@
 <template>
   <div class="profile-body">
     <div class="profile-body_cover-img">
-      <!-- <img src="@/assets/twitter__bg1.jpg" alt="" class="cover-img" /> -->
+      <img :src="user.cover_picture" alt="" class="cover-img" v-if="user.cover_picture"/>
     </div>
     <div class="profile-body_imgDiv">
       <div class="profile-img">
-        <img src="@/assets/Twitter_Bg.jpg" alt="" />
+        <img src="@/assets/Twitter_Bg.jpg" alt="default" v-if="!user.profile_picture"/>
+        <img :src="user.profile_picture" alt="user image" v-else/>
       </div>
       <!-- display button based on whether its the user or not -->
       <!-- <div class="btnDiv"><button class="btn-edit">Edit Profile</button></div> -->
@@ -13,43 +14,43 @@
     </div>
     <div class="profile-body_infoDiv">
       <div class="infoDiv_name">
-        <h3>Anastasie Alfonsetti</h3> 
-        <small>@Pigeram</small>
+        <h3>{{ user.fullname }}</h3> 
+        <small>@{{ user.username }}</small>
       </div>
       <!-- display bio only if bio is not empty -->
       <div class="infoDiv_bio">
-        <p>Mechanical Engineer ➡️ Full-stack Developer | Dev Content Creator | React JS | Javascript | Gastby | Self Taught Web Developer</p>
+        <p>{{ user.bio }}</p>
       </div>
       <div class="infoDiv_extras">
         <!-- display if the user website input isn,t empty -->
-        <div class="websiteDiv">
+        <div class="websiteDiv" v-if="user.website">
           <i class="uil uil-link"></i>
-          <p><a>https://github.com/nick335</a></p>
+          <p><a :href="user.website">{{ user.website }}</a></p>
         </div>
         <!-- display if the user location input isn,t empty -->
-        <div class="locationDiv">
+        <div class="locationDiv" v-if="user.location">
           <i class="uil uil-map-marker"></i>
           <p>Hyderabad, India</p>
         </div>
         <!-- alawys displayed since we have the information as soon as the user registers-->
         <div class="dateJoinedDiv">
           <i class="uil uil-calendar-alt"></i>
-          <p>Joined March 2022</p>
+          <p>Joined {{ user.date_created }}</p>
         </div>
       </div>
       <div class="infoDiv_stats">
         <div>
-          <p><span>106</span> Following</p>
+          <p><span>{{ user.following }}</span> Following</p>
         </div>
         <div>
-          <p><span>106</span> Followers</p>
+          <p><span>{{ user.followers }}</span> Followers</p>
         </div>
       </div>
       <!-- display based on when its user or not -->
       <!-- number of people you follow that follow that user -->
-      <div>
+      <!-- <div>
         <p>Followed by 5 people you follow</p>
-      </div>
+      </div> -->
     </div>
     <div class="profile-body_controls">
       <div>
@@ -70,7 +71,18 @@
     <!-- tweets, tweets&replies, Media, likes -->
   </div>
 </template>
+<script>
+export default {
+  props: {
+    user: Object
+  },
+  data(){
+    return {
 
+    }
+  }
+}
+</script>
 <style scoped>
   .profile-body{
     background-color: var(--color-white);

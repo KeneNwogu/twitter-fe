@@ -53,7 +53,9 @@
 <script setup>
     import { ref } from 'vue';
     import { useStore } from 'vuex';
+    import { useRouter } from 'vue-router';
 
+    let router = useRouter();
     const store = useStore();
     let form = ref({ email: '', password: '', submitted: false, success: false })
 
@@ -80,7 +82,7 @@
             .then((data) => {
                 form.value.success = true;
                 store.commit('SET_USER_TOKEN', data)
-
+                router.push('/')
                 // TODO: perform redirect to home page
             })
             .catch((e) => {

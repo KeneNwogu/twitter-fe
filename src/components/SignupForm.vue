@@ -43,10 +43,10 @@
               <!-- end error message  -->
             </div>
         
-            <div class="input-box animation a6" :class="!form.birth_date.isValid.value ? 'error' : ''">
-              <input type="date" name="birth_date" v-model="form.birth_date.field.value" placeholder="name" required>
+            <div class="input-box animation a6" :class="!form.date_of_birth.isValid.value ? 'error' : ''">
+              <input type="date" name="birth_date" v-model="form.date_of_birth.field.value" placeholder="name" required>
               <!-- error message goes here -->
-              <p class="error-message" v-if="form.birth_date.error.value">{{ form.birth_date.error.value }}</p>
+              <p class="error-message" v-if="form.date_of_birth.error.value">{{ form.date_of_birth.error.value }}</p>
               <!-- end error message  -->
             </div> 
         </div>
@@ -78,8 +78,11 @@
 
 <script>
 import { watch, ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 export default {
   setup() {
+    let router = useRouter()
     let form = {
       name: { 
         field: ref(''),
@@ -125,7 +128,6 @@ export default {
         isValid: ref(false),
         validator(){
           this.field.value = this.field.value.trim()
-          console.log(this.field.value.length, 'last_name')
           if(this.field.value.length < 3){
             form.name.isValid.value = false
             form.name.error.value = 'lastname is too short'
@@ -187,7 +189,7 @@ export default {
           }
         }
       },
-      birth_date: { 
+      date_of_birth: { 
         field: ref(''),
         error: ref(null),
         isValid: ref(true),
@@ -262,12 +264,15 @@ export default {
         registerUser()
           .then(async (res) => {
             if (res.status != 201) {
-              throw Error((await res.json()).detail)
+              throw Error((await res.json()))
             }
             return res.json()
           })
-          .then(() => {
+          .then((data) => {
             // TODO: redirect users
+            // TODO: Add a toast message
+            router.push('/login')
+            console.log(data)
           });
       }
         
